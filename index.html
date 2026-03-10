@@ -1,650 +1,685 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AWS Cloud Practitioner (CLF-C02) - Made by Waleed</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS Cloud Practitioner (CLF-C02) - Made by Waleed</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
 
-        :root {
-            --aws-navy: #232F3E;
-            --aws-orange: #FF9900;
-            --aws-light: #F8F9FA;
-            --aws-dark: #161E2D;
-            --aws-blue: #007EB9;
-            --aws-red: #D13212;
-            --aws-green: #1D8102;
-            --text-main: #2C3E50;
-            --card-shadow: 0 10px 30px rgba(0,0,0,0.08);
-        }
+        :root {
+            --aws-navy: #232F3E;
+            --aws-orange: #FF9900;
+            --aws-light: #F8F9FA;
+            --aws-dark: #161E2D;
+            --aws-blue: #007EB9;
+            --aws-red: #D13212;
+            --aws-green: #1D8102;
+            --text-main: #2C3E50;
+            --card-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
 
-        body { background-color: var(--aws-light); color: var(--text-main); line-height: 1.7; scroll-behavior: smooth; }
+        body { background-color: var(--aws-light); color: var(--text-main); line-height: 1.7; scroll-behavior: smooth; }
 
-        /* HEADER & HERO */
-        header {
-            background: linear-gradient(135deg, var(--aws-dark) 0%, var(--aws-navy) 100%);
-            color: white; text-align: center; padding: 5rem 1rem;
-            border-bottom: 6px solid var(--aws-orange); position: relative;
-        }
-        
-        .logo-container { margin-bottom: 1.5rem; }
-        .aws-logo { height: 70px; filter: brightness(0) invert(1); margin-bottom: 10px; }
-        
-        header h1 { font-size: 3.2rem; font-weight: 800; margin-bottom: 15px; color: white; letter-spacing: 1px; }
-        header h1 span { color: var(--aws-orange); }
-        header p { font-size: 1.2rem; font-weight: 300; opacity: 0.9; max-width: 650px; margin: 0 auto; }
+        /* KEYFRAMES PER ANIMAZIONI AGGIUNTE */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+            100% { transform: translateY(0px); }
+        }
 
-        /* NAVBAR */
-        nav { background-color: rgba(35, 47, 62, 0.95); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        nav ul { list-style: none; display: flex; justify-content: center; flex-wrap: wrap; padding: 1.2rem; }
-        nav ul li { margin: 0 15px; }
-        nav ul li a { color: white; text-decoration: none; font-weight: 600; transition: color 0.3s, transform 0.3s; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; display: inline-block;}
-        nav ul li a:hover { color: var(--aws-orange); transform: translateY(-2px); }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
 
-        /* MAIN CONTENT */
-        main { max-width: 1400px; margin: 0 auto; padding: 3rem 2rem; }
-        section { margin-bottom: 5rem; padding-top: 80px; }
-        
-        .section-header { text-align: center; margin-bottom: 3rem; }
-        .section-header h2 { color: var(--aws-navy); font-size: 2.5rem; font-weight: 800; position: relative; display: inline-block; padding-bottom: 10px; }
-        .section-header h2::after { content: ''; position: absolute; width: 60%; height: 4px; background: var(--aws-orange); bottom: 0; left: 20%; border-radius: 2px; }
+        @keyframes pulseGlow {
+            0% { text-shadow: 0 0 5px rgba(255, 153, 0, 0.5); transform: scale(1); }
+            100% { text-shadow: 0 0 20px rgba(255, 153, 0, 0.9), 0 0 30px rgba(209, 50, 18, 0.6); transform: scale(1.05); }
+        }
 
-        /* IMAGES & DIAGRAM CONTAINERS */
-        .diagram-box { background: white; padding: 2rem; border-radius: 12px; box-shadow: var(--card-shadow); margin: 2rem auto; text-align: center; max-width: 950px; border: 1px solid #EAEAEA; }
-        .diagram-box img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-        .diagram-box p { font-size: 0.95rem; color: #666; margin-top: 1.5rem; font-style: italic; font-weight: 600;}
-        .card img { max-width: 100%; height: auto; margin-bottom: 1rem; border-radius: 6px; }
+        /* HEADER & HERO */
+        header {
+            background: linear-gradient(-45deg, var(--aws-dark), var(--aws-navy), #2C3E50, var(--aws-dark));
+            background-size: 400% 400%;
+            animation: gradientBG 12s ease infinite;
+            color: white; text-align: center; padding: 5rem 1rem;
+            border-bottom: 6px solid var(--aws-orange); position: relative;
+        }
+        
+        .logo-container { margin-bottom: 1.5rem; }
+        .aws-logo { 
+            height: 70px; 
+            filter: brightness(0) invert(1); 
+            margin-bottom: 10px; 
+            animation: float 4s ease-in-out infinite; /* Animazione fluttuante */
+        }
+        
+        header h1 { font-size: 3.2rem; font-weight: 800; margin-bottom: 15px; color: white; letter-spacing: 1px; }
+        header h1 span { color: var(--aws-orange); }
+        header p { font-size: 1.2rem; font-weight: 300; opacity: 0.9; max-width: 650px; margin: 0 auto; }
 
-        /* INFO BOXES */
-        .info-box { background: white; padding: 2.5rem; border-radius: 12px; box-shadow: var(--card-shadow); margin-bottom: 2.5rem; border-left: 6px solid var(--aws-blue); }
-        .info-box.tips { border-left: 6px solid var(--aws-green); }
-        .info-box h3 { color: var(--aws-blue); margin-bottom: 1.5rem; font-size: 1.6rem; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #eee; padding-bottom: 10px;}
-        .info-box.tips h3 { color: var(--aws-green); }
+        /* NAVBAR */
+        nav { background-color: rgba(35, 47, 62, 0.95); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        nav ul { list-style: none; display: flex; justify-content: center; flex-wrap: wrap; padding: 1.2rem; }
+        nav ul li { margin: 0 15px; }
+        nav ul li a { color: white; text-decoration: none; font-weight: 600; transition: color 0.3s, transform 0.3s; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; display: inline-block;}
+        nav ul li a:hover { color: var(--aws-orange); transform: translateY(-2px); }
 
-        /* GRIDS & CARDS */
-        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-bottom: 3rem;}
-        .card { background: white; padding: 2rem; border-radius: 12px; box-shadow: var(--card-shadow); border-top: 5px solid var(--aws-orange); transition: transform 0.3s, box-shadow 0.3s; position: relative; overflow: hidden; display: flex; flex-direction: column; }
-        .card:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0,0,0,0.12); }
-        .card h3 { color: var(--aws-navy); margin-bottom: 1.2rem; font-size: 1.4rem; padding-bottom: 0.8rem; border-bottom: 2px solid #F0F0F0;}
-        .card h4 { color: var(--aws-navy); margin-bottom: 1rem; font-size: 1.1rem; line-height: 1.5; }
-        
-        ul.custom-list { list-style-type: none; }
-        ul.custom-list li { margin-bottom: 1rem; padding-left: 1.8rem; position: relative; font-size: 1rem; color: #444;}
-        ul.custom-list li::before { content: "⚡"; position: absolute; left: 0; top: 2px; font-size: 1rem; }
-        ul.warning-list li::before { content: "⚠️"; }
-        ul.check-list li::before { content: "✅"; }
+        /* MAIN CONTENT */
+        main { max-width: 1400px; margin: 0 auto; padding: 3rem 2rem; }
+        section { margin-bottom: 5rem; padding-top: 80px; }
+        
+        .section-header { text-align: center; margin-bottom: 3rem; }
+        .section-header h2 { color: var(--aws-navy); font-size: 2.5rem; font-weight: 800; position: relative; display: inline-block; padding-bottom: 10px; }
+        .section-header h2::after { content: ''; position: absolute; width: 60%; height: 4px; background: var(--aws-orange); bottom: 0; left: 20%; border-radius: 2px; }
 
-        /* SERVICES TABLE / GRID */
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
-        .service-item { background: #F8F9FA; padding: 1.5rem; border-radius: 8px; border: 1px solid #EAEAEA; border-left: 4px solid var(--aws-navy); transition: all 0.2s; }
-        .service-item:hover { background: white; border-color: var(--aws-orange); border-left-color: var(--aws-orange); transform: scale(1.02); box-shadow: 0 5px 15px rgba(0,0,0,0.05);}
-        .service-item strong { display: block; color: var(--aws-orange); margin-bottom: 0.5rem; font-size: 1.2rem; font-weight: 800;}
-        
-        .tips-grid .service-item { border-left: 4px solid var(--aws-green); }
-        .tips-grid .service-item strong { color: var(--aws-navy); }
-        .tips-grid .service-item span { color: var(--aws-green); font-weight: 800; font-size: 1.1rem; display: block; margin-top: 5px;}
+        /* IMAGES & DIAGRAM CONTAINERS */
+        .diagram-box { background: white; padding: 2rem; border-radius: 12px; box-shadow: var(--card-shadow); margin: 2rem auto; text-align: center; max-width: 950px; border: 1px solid #EAEAEA; transition: transform 0.3s;}
+        .diagram-box:hover { transform: scale(1.02); } /* Animazione hover sui diagrammi */
+        .diagram-box img { max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .diagram-box p { font-size: 0.95rem; color: #666; margin-top: 1.5rem; font-style: italic; font-weight: 600;}
+        .card img { max-width: 100%; height: auto; margin-bottom: 1rem; border-radius: 6px; }
 
-        /* QUIZ SPECIFICS */
-        details { background: #f4f6f8; padding: 1rem; border-radius: 8px; margin-top: auto; border: 1px solid #e1e4e8; }
-        summary { font-weight: 600; color: var(--aws-blue); cursor: pointer; outline: none; list-style: none; display: flex; align-items: center; }
-        summary::-webkit-details-marker { display: none; }
-        summary::before { content: "👉"; margin-right: 8px; transition: transform 0.2s; }
-        details[open] summary::before { transform: rotate(90deg); }
-        .quiz-answer { margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed #ccc; }
-        .quiz-answer strong { color: var(--aws-green); }
-        .quiz-category-title { grid-column: 1 / -1; margin-top: 2rem; color: var(--aws-dark); border-bottom: 2px solid var(--aws-orange); padding-bottom: 5px;}
+        /* INFO BOXES */
+        .info-box { background: white; padding: 2.5rem; border-radius: 12px; box-shadow: var(--card-shadow); margin-bottom: 2.5rem; border-left: 6px solid var(--aws-blue); transition: transform 0.3s;}
+        .info-box:hover { transform: translateX(5px); }
+        .info-box.tips { border-left: 6px solid var(--aws-green); }
+        .info-box h3 { color: var(--aws-blue); margin-bottom: 1.5rem; font-size: 1.6rem; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #eee; padding-bottom: 10px;}
+        .info-box.tips h3 { color: var(--aws-green); }
 
-        /* ANIMAZIONI */
-        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
-        .reveal.active { opacity: 1; transform: translateY(0); }
+        /* GRIDS & CARDS */
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-bottom: 3rem;}
+        .card { background: white; padding: 2rem; border-radius: 12px; box-shadow: var(--card-shadow); border-top: 5px solid var(--aws-orange); transition: transform 0.3s, box-shadow 0.3s; position: relative; overflow: hidden; display: flex; flex-direction: column; }
+        .card:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0,0,0,0.12); }
+        .card h3 { color: var(--aws-navy); margin-bottom: 1.2rem; font-size: 1.4rem; padding-bottom: 0.8rem; border-bottom: 2px solid #F0F0F0;}
+        .card h4 { color: var(--aws-navy); margin-bottom: 1rem; font-size: 1.1rem; line-height: 1.5; }
+        
+        ul.custom-list { list-style-type: none; }
+        ul.custom-list li { margin-bottom: 1rem; padding-left: 1.8rem; position: relative; font-size: 1rem; color: #444;}
+        ul.custom-list li::before { content: "⚡"; position: absolute; left: 0; top: 2px; font-size: 1rem; }
+        ul.warning-list li::before { content: "⚠️"; }
+        ul.check-list li::before { content: "✅"; }
 
-        /* FOOTER */
-        footer { background-color: var(--aws-dark); color: white; text-align: center; padding: 4rem 2rem; margin-top: 5rem; border-top: 6px solid var(--aws-orange); }
-        .made-by { font-size: 1.8rem; font-weight: 800; color: var(--aws-orange); margin-top: 1.5rem; text-transform: uppercase; letter-spacing: 3px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);}
-    </style>
+        /* SERVICES TABLE / GRID */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+        .service-item { background: #F8F9FA; padding: 1.5rem; border-radius: 8px; border: 1px solid #EAEAEA; border-left: 4px solid var(--aws-navy); transition: all 0.2s; }
+        .service-item:hover { background: white; border-color: var(--aws-orange); border-left-color: var(--aws-orange); transform: scale(1.03); box-shadow: 0 5px 15px rgba(0,0,0,0.05);}
+        .service-item strong { display: block; color: var(--aws-orange); margin-bottom: 0.5rem; font-size: 1.2rem; font-weight: 800;}
+        
+        .tips-grid .service-item { border-left: 4px solid var(--aws-green); }
+        .tips-grid .service-item strong { color: var(--aws-navy); }
+        .tips-grid .service-item span { color: var(--aws-green); font-weight: 800; font-size: 1.1rem; display: block; margin-top: 5px;}
+
+        /* QUIZ SPECIFICS */
+        details { background: #f4f6f8; padding: 1rem; border-radius: 8px; margin-top: auto; border: 1px solid #e1e4e8; transition: all 0.3s ease; }
+        summary { font-weight: 600; color: var(--aws-blue); cursor: pointer; outline: none; list-style: none; display: flex; align-items: center; }
+        summary::-webkit-details-marker { display: none; }
+        summary::before { content: "👉"; margin-right: 8px; transition: transform 0.3s; }
+        details[open] summary::before { transform: rotate(90deg); }
+        .quiz-answer { margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed #ccc; animation: fadeIn 0.5s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        .quiz-answer strong { color: var(--aws-green); }
+        .quiz-category-title { grid-column: 1 / -1; margin-top: 2rem; color: var(--aws-dark); border-bottom: 2px solid var(--aws-orange); padding-bottom: 5px;}
+
+        /* ANIMAZIONI SCROLL */
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* FOOTER */
+        footer { background-color: var(--aws-dark); color: white; text-align: center; padding: 4rem 2rem; margin-top: 5rem; border-top: 6px solid var(--aws-orange); }
+        .made-by { 
+            font-size: 1.8rem; 
+            font-weight: 800; 
+            color: var(--aws-orange); 
+            margin-top: 1.5rem; 
+            text-transform: uppercase; 
+            letter-spacing: 3px; 
+            display: inline-block;
+            animation: pulseGlow 2s infinite alternate; /* Effetto bagliore */
+        }
+    </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo-container">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" alt="AWS Logo" class="aws-logo">
-        </div>
-        <h1>AWS <span>Cloud Practitioner</span> (CLF-C02)</h1>
-        <p>La Guida Definitiva visiva per superare l'esame: Architettura, Sicurezza, Servizi, Trucchi da pro e Simulazioni.</p>
-    </header>
+    <header>
+        <div class="logo-container">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" alt="AWS Logo" class="aws-logo">
+        </div>
+        <h1>AWS <span>Cloud Practitioner</span> (CLF-C02)</h1>
+        <p>La Guida Definitiva visiva per superare l'esame: Architettura, Sicurezza, Servizi, Trucchi da pro e Simulazioni.</p>
+    </header>
 
-    <nav>
-        <ul>
-            <li><a href="#architettura">1. Architettura</a></li>
-            <li><a href="#sicurezza">2. Sicurezza</a></li>
-            <li><a href="#servizi">3. Servizi Chiave</a></li>
-            <li><a href="#well-architected">4. Well-Architected</a></li>
-            <li><a href="#fatturazione">5. Fatturazione</a></li>
-            <li><a href="#tips">6. Tips & Tricks</a></li>
-            <li><a href="#quiz">7. Quiz</a></li>
-        </ul>
-    </nav>
+    <nav>
+        <ul>
+            <li><a href="#architettura">1. Architettura</a></li>
+            <li><a href="#sicurezza">2. Sicurezza</a></li>
+            <li><a href="#servizi">3. Servizi Chiave</a></li>
+            <li><a href="#well-architected">4. Well-Architected</a></li>
+            <li><a href="#fatturazione">5. Fatturazione</a></li>
+            <li><a href="#tips">6. Tips & Tricks</a></li>
+            <li><a href="#quiz">7. Quiz</a></li>
+        </ul>
+    </nav>
 
-    <main>
-        <section id="architettura">
-            <div class="section-header reveal">
-                <h2>1. Infrastruttura Globale AWS</h2>
-            </div>
-            
-            <div class="diagram-box reveal">
-                <img src="https://d2908q01vomqb2.cloudfront.net/5b384ce32d8cdef02bc3a139d4cac0a22bb029e8/2020/01/24/Global-Infra-Map-1024x519.png" alt="Mappa Infrastruttura Globale AWS" loading="lazy">
-                <p>Mappa globale delle Regioni AWS per garantire bassa latenza, tolleranza ai guasti e sovranità dei dati in tutto il mondo.</p>
-            </div>
-            
-            <div class="grid-container">
-                <div class="card reveal">
-                    <h3>Regioni (Regions)</h3>
-                    <p>Aree geografiche fisiche sparse per il mondo (es. <em>eu-south-1</em> a Milano). Ogni regione è <strong>completamente indipendente e isolata</strong> dalle altre per garantire la massima tolleranza ai guasti.</p>
-                    <p style="margin-top: 15px; font-weight: bold; color: var(--aws-blue);">Come scegliere una Regione per l'esame:</p>
-                    <ul class="custom-list">
-                        <li>Latenza (vicinanza agli utenti finali)</li>
-                        <li>Costi (variano per regione)</li>
-                        <li>Servizi disponibili (non tutti i servizi sono ovunque)</li>
-                        <li>Conformità legale locale (es. GDPR)</li>
-                    </ul>
-                </div>
-                
-                <div class="card reveal">
-                    <h3>Zone di Disponibilità (AZs)</h3>
-                    <img src="https://docs.aws.amazon.com/images/whitepapers/latest/aws-fault-isolation-boundaries/images/availability-zones.png" alt="Diagramma Zone di Disponibilità" loading="lazy" style="margin-top: 10px; margin-bottom: 15px;">
-                    <p>Ogni Regione contiene <strong>almeno 2 (spesso 3 o più) Zone di Disponibilità</strong>. Un'AZ è costituita da uno o più data center fisici separati (spesso a decine di km di distanza), con alimentazione e rete indipendenti per prevenire guasti a cascata.</p>
-                </div>
+    <main>
+        <section id="architettura">
+            <div class="section-header reveal">
+                <h2>1. Infrastruttura Globale AWS</h2>
+            </div>
+            
+            <div class="diagram-box reveal">
+                <img src="https://d2908q01vomqb2.cloudfront.net/5b384ce32d8cdef02bc3a139d4cac0a22bb029e8/2020/01/24/Global-Infra-Map-1024x519.png" alt="Mappa Infrastruttura Globale AWS" loading="lazy">
+                <p>Mappa globale delle Regioni AWS per garantire bassa latenza, tolleranza ai guasti e sovranità dei dati in tutto il mondo.</p>
+            </div>
+            
+            <div class="grid-container">
+                <div class="card reveal">
+                    <h3>Regioni (Regions)</h3>
+                    <p>Aree geografiche fisiche sparse per il mondo (es. <em>eu-south-1</em> a Milano). Ogni regione è <strong>completamente indipendente e isolata</strong> dalle altre per garantire la massima tolleranza ai guasti.</p>
+                    <p style="margin-top: 15px; font-weight: bold; color: var(--aws-blue);">Come scegliere una Regione per l'esame:</p>
+                    <ul class="custom-list">
+                        <li>Latenza (vicinanza agli utenti finali)</li>
+                        <li>Costi (variano per regione)</li>
+                        <li>Servizi disponibili (non tutti i servizi sono ovunque)</li>
+                        <li>Conformità legale locale (es. GDPR)</li>
+                    </ul>
+                </div>
+                
+                <div class="card reveal">
+                    <h3>Zone di Disponibilità (AZs)</h3>
+                    <img src="https://docs.aws.amazon.com/images/whitepapers/latest/aws-fault-isolation-boundaries/images/availability-zones.png" alt="Diagramma Zone di Disponibilità" loading="lazy" style="margin-top: 10px; margin-bottom: 15px;">
+                    <p>Ogni Regione contiene <strong>almeno 2 (spesso 3 o più) Zone di Disponibilità</strong>. Un'AZ è costituita da uno o più data center fisici separati (spesso a decine di km di distanza), con alimentazione e rete indipendenti per prevenire guasti a cascata.</p>
+                </div>
 
-                <div class="card reveal">
-                    <h3>Edge Locations & Edge</h3>
-                    <ul class="custom-list">
-                        <li><strong>Edge Locations:</strong> Punti di presenza (PoP) in tutto il mondo per memorizzare nella cache i contenuti visivi e statici (Usati da Amazon CloudFront / Route 53).</li>
-                        <li><strong>Local Zones:</strong> Estensioni delle regioni AWS posizionate vicino a grandi centri abitati per latenza a una singola cifra di millisecondi.</li>
-                        <li><strong>Outposts:</strong> Rack hardware fisici AWS installati direttamente nel tuo data center per creare un cloud ibrido.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+                <div class="card reveal">
+                    <h3>Edge Locations & Edge</h3>
+                    <ul class="custom-list">
+                        <li><strong>Edge Locations:</strong> Punti di presenza (PoP) in tutto il mondo per memorizzare nella cache i contenuti visivi e statici (Usati da Amazon CloudFront / Route 53).</li>
+                        <li><strong>Local Zones:</strong> Estensioni delle regioni AWS posizionate vicino a grandi centri abitati per latenza a una singola cifra di millisecondi.</li>
+                        <li><strong>Outposts:</strong> Rack hardware fisici AWS installati direttamente nel tuo data center per creare un cloud ibrido.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
-        <section id="sicurezza">
-            <div class="section-header reveal">
-                <h2>2. Sicurezza e Modello di Responsabilità</h2>
-            </div>
+        <section id="sicurezza">
+            <div class="section-header reveal">
+                <h2>2. Sicurezza e Modello di Responsabilità</h2>
+            </div>
 
-            <div class="diagram-box reveal">
-                <img src="https://d1.awsstatic.com/security-center/Shared_Responsibility_Model_V2.59d1eccec334b366627e9295b304202faf7b899b.jpg" alt="Modello di Responsabilità Condivisa AWS" loading="lazy">
-                <p>Il Modello di Responsabilità Condivisa: una delle tematiche in assoluto più richieste all'esame CLF-C02.</p>
-            </div>
+            <div class="diagram-box reveal">
+                <img src="https://d1.awsstatic.com/security-center/Shared_Responsibility_Model_V2.59d1eccec334b366627e9295b304202faf7b899b.jpg" alt="Modello di Responsabilità Condivisa AWS" loading="lazy">
+                <p>Il Modello di Responsabilità Condivisa: una delle tematiche in assoluto più richieste all'esame CLF-C02.</p>
+            </div>
 
-            <div class="grid-container">
-                <div class="card reveal">
-                    <h3>Responsabilità di AWS (Sicurezza DEL Cloud)</h3>
-                    <ul class="custom-list">
-                        <li>Sicurezza fisica dei Data Center (guardie, telecamere).</li>
-                        <li>Infrastruttura di rete globale (cavi, router sottomarini).</li>
-                        <li>Hardware fisico, Storage e Server host (Hypervisor).</li>
-                        <li>Patching dei servizi gestiti (es. aggiornamenti automatici dell'OS per database RDS o DynamoDB).</li>
-                    </ul>
-                </div>
-                <div class="card reveal">
-                    <h3>Responsabilità del Cliente (Sicurezza NEL Cloud)</h3>
-                    <ul class="custom-list">
-                        <li>Gestione e protezione dei dati (Crittografia dei dati a riposo e in transito).</li>
-                        <li>Configurazione IAM (Gestione accessi utenti, attivazione MFA, rotazione password).</li>
-                        <li>Patching e aggiornamenti del sistema operativo ospite (su cui girano le TUE istanze EC2).</li>
-                        <li>Configurazione regole firewall (Security Groups per EC2 e NACL per la VPC).</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+            <div class="grid-container">
+                <div class="card reveal">
+                    <h3>Responsabilità di AWS (Sicurezza DEL Cloud)</h3>
+                    <ul class="custom-list">
+                        <li>Sicurezza fisica dei Data Center (guardie, telecamere).</li>
+                        <li>Infrastruttura di rete globale (cavi, router sottomarini).</li>
+                        <li>Hardware fisico, Storage e Server host (Hypervisor).</li>
+                        <li>Patching dei servizi gestiti (es. aggiornamenti automatici dell'OS per database RDS o DynamoDB).</li>
+                    </ul>
+                </div>
+                <div class="card reveal">
+                    <h3>Responsabilità del Cliente (Sicurezza NEL Cloud)</h3>
+                    <ul class="custom-list">
+                        <li>Gestione e protezione dei dati (Crittografia dei dati a riposo e in transito).</li>
+                        <li>Configurazione IAM (Gestione accessi utenti, attivazione MFA, rotazione password).</li>
+                        <li>Patching e aggiornamenti del sistema operativo ospite (su cui girano le TUE istanze EC2).</li>
+                        <li>Configurazione regole firewall (Security Groups per EC2 e NACL per la VPC).</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
-        <section id="servizi">
-            <div class="section-header reveal">
-                <h2>3. I 50 Servizi AWS Chiave (Cheat Sheet)</h2>
-            </div>
-            
-            <div class="info-box reveal">
-                <h3>💻 Calcolo (Compute) & Container</h3>
-                <div class="services-grid">
-                    <div class="service-item"><strong>Amazon EC2</strong>Server virtuali nel cloud (IaaS). Capacità ridimensionabile on-demand per ogni sistema operativo.</div>
-                    <div class="service-item"><strong>AWS Lambda</strong>Esegue codice in risposta ad eventi senza gestire server (Serverless). Paghi esattamente per i millisecondi usati.</div>
-                    <div class="service-item"><strong>Amazon ECS / EKS</strong>Servizi per l'orchestrazione e gestione dei container (Docker / Kubernetes).</div>
-                    <div class="service-item"><strong>AWS Fargate</strong>Motore di calcolo serverless per i tuoi container ECS o EKS. Non gestisci i server sottostanti.</div>
-                    <div class="service-item"><strong>AWS Elastic Beanstalk</strong>Servizio PaaS: tu carichi solo il codice, AWS gestisce provisioning, load balancing e scaling.</div>
-                    <div class="service-item"><strong>Amazon Lightsail</strong>VPS preconfigurata, perfetta per progetti semplici o siti web (es. WordPress, Joomla) a basso costo.</div>
-                </div>
-            </div>
+        <section id="servizi">
+            <div class="section-header reveal">
+                <h2>3. I 50 Servizi AWS Chiave (Cheat Sheet)</h2>
+            </div>
+            
+            <div class="info-box reveal">
+                <h3>💻 Calcolo (Compute) & Container</h3>
+                <div class="services-grid">
+                    <div class="service-item"><strong>Amazon EC2</strong>Server virtuali nel cloud (IaaS). Capacità ridimensionabile on-demand per ogni sistema operativo.</div>
+                    <div class="service-item"><strong>AWS Lambda</strong>Esegue codice in risposta ad eventi senza gestire server (Serverless). Paghi esattamente per i millisecondi usati.</div>
+                    <div class="service-item"><strong>Amazon ECS / EKS</strong>Servizi per l'orchestrazione e gestione dei container (Docker / Kubernetes).</div>
+                    <div class="service-item"><strong>AWS Fargate</strong>Motore di calcolo serverless per i tuoi container ECS o EKS. Non gestisci i server sottostanti.</div>
+                    <div class="service-item"><strong>AWS Elastic Beanstalk</strong>Servizio PaaS: tu carichi solo il codice, AWS gestisce provisioning, load balancing e scaling.</div>
+                    <div class="service-item"><strong>Amazon Lightsail</strong>VPS preconfigurata, perfetta per progetti semplici o siti web (es. WordPress, Joomla) a basso costo.</div>
+                </div>
+            </div>
 
-            <div class="info-box reveal">
-                <h3>💾 Archiviazione (Storage)</h3>
-                <div class="services-grid">
-                    <div class="service-item"><strong>Amazon S3</strong>Archiviazione di oggetti infinita. Usato per file, immagini, backup, log e hosting di siti web statici.</div>
-                    <div class="service-item"><strong>Amazon EBS</strong>Volumi di archiviazione a blocchi. Sono essenzialmente i "dischi rigidi" collegati alle tue istanze EC2.</div>
-                    <div class="service-item"><strong>Amazon EFS</strong>File system di rete condiviso, elastico e serverless per più istanze Linux contemporaneamente.</div>
-                    <div class="service-item"><strong>Amazon S3 Glacier</strong>Classi di archiviazione S3 per dati a lungo termine e archivi a freddo a costi estremamente bassi.</div>
-                    <div class="service-item"><strong>AWS Snow Family</strong>Dispositivi fisici (Snowcone, Snowball, Snowmobile) che AWS ti spedisce per migrare enormi quantità di dati offline.</div>
-                </div>
-            </div>
+            <div class="info-box reveal">
+                <h3>💾 Archiviazione (Storage)</h3>
+                <div class="services-grid">
+                    <div class="service-item"><strong>Amazon S3</strong>Archiviazione di oggetti infinita. Usato per file, immagini, backup, log e hosting di siti web statici.</div>
+                    <div class="service-item"><strong>Amazon EBS</strong>Volumi di archiviazione a blocchi. Sono essenzialmente i "dischi rigidi" collegati alle tue istanze EC2.</div>
+                    <div class="service-item"><strong>Amazon EFS</strong>File system di rete condiviso, elastico e serverless per più istanze Linux contemporaneamente.</div>
+                    <div class="service-item"><strong>Amazon S3 Glacier</strong>Classi di archiviazione S3 per dati a lungo termine e archivi a freddo a costi estremamente bassi.</div>
+                    <div class="service-item"><strong>AWS Snow Family</strong>Dispositivi fisici (Snowcone, Snowball, Snowmobile) che AWS ti spedisce per migrare enormi quantità di dati offline.</div>
+                </div>
+            </div>
 
-            <div class="info-box reveal">
-                <h3>🗄️ Database</h3>
-                <div class="services-grid">
-                    <div class="service-item"><strong>Amazon RDS</strong>Servizio di database relazionali gestito. Supporta MySQL, PostgreSQL, Oracle, SQL Server, MariaDB.</div>
-                    <div class="service-item"><strong>Amazon Aurora</strong>DB relazionale proprietario AWS, super performante (compatibile MySQL/PostgreSQL). Fino a 5x più veloce.</div>
-                    <div class="service-item"><strong>Amazon DynamoDB</strong>Database NoSQL (chiave-valore e documenti) serverless. Offre latenza a singola cifra di millisecondo.</div>
-                    <div class="service-item"><strong>Amazon Redshift</strong>Data warehouse cloud progettato per eseguire analisi SQL complesse su petabyte di dati aziendali.</div>
-                    <div class="service-item"><strong>Amazon ElastiCache</strong>Servizio di cache in-memory (Redis/Memcached) per accelerare drasticamente le letture dei database.</div>
-                </div>
-            </div>
+            <div class="info-box reveal">
+                <h3>🗄️ Database</h3>
+                <div class="services-grid">
+                    <div class="service-item"><strong>Amazon RDS</strong>Servizio di database relazionali gestito. Supporta MySQL, PostgreSQL, Oracle, SQL Server, MariaDB.</div>
+                    <div class="service-item"><strong>Amazon Aurora</strong>DB relazionale proprietario AWS, super performante (compatibile MySQL/PostgreSQL). Fino a 5x più veloce.</div>
+                    <div class="service-item"><strong>Amazon DynamoDB</strong>Database NoSQL (chiave-valore e documenti) serverless. Offre latenza a singola cifra di millisecondo.</div>
+                    <div class="service-item"><strong>Amazon Redshift</strong>Data warehouse cloud progettato per eseguire analisi SQL complesse su petabyte di dati aziendali.</div>
+                    <div class="service-item"><strong>Amazon ElastiCache</strong>Servizio di cache in-memory (Redis/Memcached) per accelerare drasticamente le letture dei database.</div>
+                </div>
+            </div>
 
-            <div class="info-box reveal">
-                <h3>🌐 Reti e Networking</h3>
-                <div class="services-grid">
-                    <div class="service-item"><strong>Amazon VPC</strong>(Virtual Private Cloud). Rete virtuale isolata dove lanci le risorse. Il tuo data center logico.</div>
-                    <div class="service-item"><strong>Amazon Route 53</strong>Servizio DNS (Domain Name System) cloud scalabile per instradare gli utenti finali ai siti web.</div>
-                    <div class="service-item"><strong>Amazon CloudFront</strong>CDN globale (Content Delivery Network). Usa le Edge Location per distribuire dati a bassissima latenza.</div>
-                    <div class="service-item"><strong>AWS Direct Connect</strong>Connessione di rete dedicata in fibra ottica che collega il tuo ufficio fisico direttamente ad AWS.</div>
-                </div>
-            </div>
+            <div class="info-box reveal">
+                <h3>🌐 Reti e Networking</h3>
+                <div class="services-grid">
+                    <div class="service-item"><strong>Amazon VPC</strong>(Virtual Private Cloud). Rete virtuale isolata dove lanci le risorse. Il tuo data center logico.</div>
+                    <div class="service-item"><strong>Amazon Route 53</strong>Servizio DNS (Domain Name System) cloud scalabile per instradare gli utenti finali ai siti web.</div>
+                    <div class="service-item"><strong>Amazon CloudFront</strong>CDN globale (Content Delivery Network). Usa le Edge Location per distribuire dati a bassissima latenza.</div>
+                    <div class="service-item"><strong>AWS Direct Connect</strong>Connessione di rete dedicata in fibra ottica che collega il tuo ufficio fisico direttamente ad AWS.</div>
+                </div>
+            </div>
 
-            <div class="info-box reveal">
-                <h3>🛡️ Sicurezza e Conformità</h3>
-                <div class="services-grid">
-                    <div class="service-item"><strong>AWS IAM</strong>Il cuore della sicurezza: gestisce Utenti, Gruppi, Ruoli e Policy di accesso scritte in formato JSON.</div>
-                    <div class="service-item"><strong>AWS WAF & Shield</strong>WAF blocca exploit web comuni (es. SQLi, XSS). Shield protegge l'infrastruttura dagli attacchi DDoS.</div>
-                    <div class="service-item"><strong>AWS KMS</strong>Servizio centralizzato per creare e gestire le chiavi crittografiche per proteggere i tuoi dati.</div>
-                    <div class="service-item"><strong>Amazon GuardDuty</strong>Analizza log di rete usando il Machine Learning per rilevare minacce in tempo reale (Intelligent Threat Detection).</div>
-                    <div class="service-item"><strong>AWS Artifact</strong>Il portale self-service per scaricare i report ufficiali di conformità e sicurezza AWS (ISO, PCI-DSS, SOC).</div>
-                </div>
-            </div>
+            <div class="info-box reveal">
+                <h3>🛡️ Sicurezza e Conformità</h3>
+                <div class="services-grid">
+                    <div class="service-item"><strong>AWS IAM</strong>Il cuore della sicurezza: gestisce Utenti, Gruppi, Ruoli e Policy di accesso scritte in formato JSON.</div>
+                    <div class="service-item"><strong>AWS WAF & Shield</strong>WAF blocca exploit web comuni (es. SQLi, XSS). Shield protegge l'infrastruttura dagli attacchi DDoS.</div>
+                    <div class="service-item"><strong>AWS KMS</strong>Servizio centralizzato per creare e gestire le chiavi crittografiche per proteggere i tuoi dati.</div>
+                    <div class="service-item"><strong>Amazon GuardDuty</strong>Analizza log di rete usando il Machine Learning per rilevare minacce in tempo reale (Intelligent Threat Detection).</div>
+                    <div class="service-item"><strong>AWS Artifact</strong>Il portale self-service per scaricare i report ufficiali di conformità e sicurezza AWS (ISO, PCI-DSS, SOC).</div>
+                </div>
+            </div>
 
-            <div class="info-box reveal">
-                <h3>🛠️ Gestione, Monitoraggio e Governance</h3>
-                <div class="services-grid">
-                    <div class="service-item"><strong>Amazon CloudWatch</strong>Raccoglie metriche (CPU, rete) e log in tempo reale. Fondamentale per impostare allarmi automatici.</div>
-                    <div class="service-item"><strong>AWS CloudTrail</strong>Auditing puro: registra tutte le chiamate API. Risponde alla domanda "Chi ha fatto cosa, quando e da dove?".</div>
-                    <div class="service-item"><strong>AWS CloudFormation</strong>Infrastructure as Code (IaC). Crei e replichi interi ambienti scrivendo script o modelli YAML/JSON.</div>
-                    <div class="service-item"><strong>AWS Trusted Advisor</strong>L'esperto cloud automatico. Ti dà consigli su: Costi, Prestazioni, Sicurezza, Tolleranza guasti, Limiti di servizio.</div>
-                    <div class="service-item"><strong>AWS Auto Scaling</strong>Aggiunge o rimuove automaticamente risorse (come istanze EC2) in base al traffico effettivo del momento.</div>
-                    <div class="service-item"><strong>AWS Organizations</strong>Permette di raggruppare più account AWS aziendali per ottenere sconti sui volumi e fatturazione unica consolidata.</div>
-                </div>
-            </div>
-            
-            <div class="info-box reveal">
-                <h3>🧠 Integrazione & Machine Learning</h3>
-                <div class="services-grid">
-                    <div class="service-item"><strong>Amazon SQS</strong>(Simple Queue Service). Coda di messaggi per disaccoppiare e scalare in modo indipendente i microservizi.</div>
-                    <div class="service-item"><strong>Amazon SNS</strong>(Simple Notification Service). Servizio pub/sub per inviare messaggi, email o SMS agli utenti o alle app.</div>
-                    <div class="service-item"><strong>Amazon Athena</strong>Fai query SQL direttamente sui file di testo e log archiviati in S3, senza dover creare nessun server database.</div>
-                    <div class="service-item"><strong>Amazon SageMaker</strong>Piattaforma completa per sviluppatori e data scientist per addestrare e rilasciare modelli di Machine Learning.</div>
-                </div>
-            </div>
-        </section>
+            <div class="info-box reveal">
+                <h3>🛠️ Gestione, Monitoraggio e Governance</h3>
+                <div class="services-grid">
+                    <div class="service-item"><strong>Amazon CloudWatch</strong>Raccoglie metriche (CPU, rete) e log in tempo reale. Fondamentale per impostare allarmi automatici.</div>
+                    <div class="service-item"><strong>AWS CloudTrail</strong>Auditing puro: registra tutte le chiamate API. Risponde alla domanda "Chi ha fatto cosa, quando e da dove?".</div>
+                    <div class="service-item"><strong>AWS CloudFormation</strong>Infrastructure as Code (IaC). Crei e replichi interi ambienti scrivendo script o modelli YAML/JSON.</div>
+                    <div class="service-item"><strong>AWS Trusted Advisor</strong>L'esperto cloud automatico. Ti dà consigli su: Costi, Prestazioni, Sicurezza, Tolleranza guasti, Limiti di servizio.</div>
+                    <div class="service-item"><strong>AWS Auto Scaling</strong>Aggiunge o rimuove automaticamente risorse (come istanze EC2) in base al traffico effettivo del momento.</div>
+                    <div class="service-item"><strong>AWS Organizations</strong>Permette di raggruppare più account AWS aziendali per ottenere sconti sui volumi e fatturazione unica consolidata.</div>
+                </div>
+            </div>
+            
+            <div class="info-box reveal">
+                <h3>🧠 Integrazione & Machine Learning</h3>
+                <div class="services-grid">
+                    <div class="service-item"><strong>Amazon SQS</strong>(Simple Queue Service). Coda di messaggi per disaccoppiare e scalare in modo indipendente i microservizi.</div>
+                    <div class="service-item"><strong>Amazon SNS</strong>(Simple Notification Service). Servizio pub/sub per inviare messaggi, email o SMS agli utenti o alle app.</div>
+                    <div class="service-item"><strong>Amazon Athena</strong>Fai query SQL direttamente sui file di testo e log archiviati in S3, senza dover creare nessun server database.</div>
+                    <div class="service-item"><strong>Amazon SageMaker</strong>Piattaforma completa per sviluppatori e data scientist per addestrare e rilasciare modelli di Machine Learning.</div>
+                </div>
+            </div>
+        </section>
 
-        <section id="well-architected">
-            <div class="section-header reveal">
-                <h2>4. AWS Well-Architected Framework</h2>
-            </div>
-            
-            <div class="diagram-box reveal">
-                <img src="https://d2908q01vomqb2.cloudfront.net/887309d7d060a4c8f4bfcb5f22ca0b66a6a8e1b6/2021/12/01/New-Pillar-700x394.png" alt="I 6 Pilastri del Well-Architected Framework AWS" loading="lazy">
-                <p>I 6 pilastri fondamentali per progettare architetture cloud di successo.</p>
-            </div>
+        <section id="well-architected">
+            <div class="section-header reveal">
+                <h2>4. AWS Well-Architected Framework</h2>
+            </div>
+            
+            <div class="diagram-box reveal">
+                <img src="https://d2908q01vomqb2.cloudfront.net/887309d7d060a4c8f4bfcb5f22ca0b66a6a8e1b6/2021/12/01/New-Pillar-700x394.png" alt="I 6 Pilastri del Well-Architected Framework AWS" loading="lazy">
+                <p>I 6 pilastri fondamentali per progettare architetture cloud di successo.</p>
+            </div>
 
-            <div class="grid-container">
-                <div class="card reveal">
-                    <h3>I 6 Pilastri (The 6 Pillars)</h3>
-                    <ul class="custom-list">
-                        <li><strong>Eccellenza Operativa:</strong> Eseguire e monitorare i sistemi. Automatizzare modifiche e rispondere agli eventi in modo procedurale.</li>
-                        <li><strong>Sicurezza:</strong> Proteggere dati, sistemi e risorse tramite crittografia, IAM e tracciabilità.</li>
-                        <li><strong>Affidabilità:</strong> Capacità di un sistema di riprendersi rapidamente dai guasti, testare il ripristino e garantire ridondanza.</li>
-                        <li><strong>Efficienza delle Prestazioni:</strong> Scegliere e usare in modo ottimale le risorse IT scalabili rispetto al carico di lavoro.</li>
-                        <li><strong>Ottimizzazione dei Costi:</strong> Eliminare spese inutili, dimensionare correttamente le istanze (right-sizing) e usare strumenti di pricing.</li>
-                        <li><strong>Sostenibilità:</strong> Minimizzare l'impatto ambientale e il consumo energetico dell'architettura riducendo gli sprechi.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+            <div class="grid-container">
+                <div class="card reveal">
+                    <h3>I 6 Pilastri (The 6 Pillars)</h3>
+                    <ul class="custom-list">
+                        <li><strong>Eccellenza Operativa:</strong> Eseguire e monitorare i sistemi. Automatizzare modifiche e rispondere agli eventi in modo procedurale.</li>
+                        <li><strong>Sicurezza:</strong> Proteggere dati, sistemi e risorse tramite crittografia, IAM e tracciabilità.</li>
+                        <li><strong>Affidabilità:</strong> Capacità di un sistema di riprendersi rapidamente dai guasti, testare il ripristino e garantire ridondanza.</li>
+                        <li><strong>Efficienza delle Prestazioni:</strong> Scegliere e usare in modo ottimale le risorse IT scalabili rispetto al carico di lavoro.</li>
+                        <li><strong>Ottimizzazione dei Costi:</strong> Eliminare spese inutili, dimensionare correttamente le istanze (right-sizing) e usare strumenti di pricing.</li>
+                        <li><strong>Sostenibilità:</strong> Minimizzare l'impatto ambientale e il consumo energetico dell'architettura riducendo gli sprechi.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
-        <section id="fatturazione">
-            <div class="section-header reveal">
-                <h2>5. Fatturazione e Costi</h2>
-            </div>
-            
-            <div class="diagram-box reveal">
-                <img src="https://d2908q01vomqb2.cloudfront.net/9e6a55b6b4563e652a23be9d623ca5055c356940/2019/11/25/ec2-pricing-options.png" alt="Modelli di Pricing EC2" loading="lazy">
-                <p>Schema concettuale dei metodi di acquisto dell'infrastruttura di calcolo.</p>
-            </div>
+        <section id="fatturazione">
+            <div class="section-header reveal">
+                <h2>5. Fatturazione e Costi</h2>
+            </div>
+            
+            <div class="diagram-box reveal">
+                <img src="https://d2908q01vomqb2.cloudfront.net/9e6a55b6b4563e652a23be9d623ca5055c356940/2019/11/25/ec2-pricing-options.png" alt="Modelli di Pricing EC2" loading="lazy">
+                <p>Schema concettuale dei metodi di acquisto dell'infrastruttura di calcolo.</p>
+            </div>
 
-            <div class="grid-container">
-                <div class="card reveal">
-                    <h3>Piani tariffari per le Istanze (EC2)</h3>
-                    <ul class="custom-list">
-                        <li><strong>On-Demand:</strong> Paghi al secondo o all'ora. Nessun impegno. Ideale per carichi imprevedibili e di breve durata.</li>
-                        <li><strong>Reserved Instances / Savings Plans:</strong> Impegno a priori di 1 o 3 anni. Sconto enorme (fino al 72%). Per carichi di lavoro in esecuzione costante.</li>
-                        <li><strong>Spot Instances:</strong> Sconto fino al 90%. AWS può spegnerle con 2 minuti di preavviso. Ideali per batch processing e calcoli non critici.</li>
-                        <li><strong>Dedicated Hosts:</strong> Server fisici dedicati interamente a te. Obbligatorio per regole di compliance legale o licenze software BYOL.</li>
-                    </ul>
-                </div>
-                <div class="card reveal">
-                    <h3>Strumenti Finanziari</h3>
-                    <ul class="custom-list">
-                        <li><strong>AWS Pricing Calculator:</strong> Da usare <em>prima</em> di lanciare i servizi per fare preventivi.</li>
-                        <li><strong>AWS Cost Explorer:</strong> Grafici interattivi per analizzare la spesa storica e fare previsioni future.</li>
-                        <li><strong>AWS Budgets:</strong> Imposta limiti personalizzati e invia allarmi prima che la fattura diventi troppo alta.</li>
-                        <li><strong>Piani di Supporto:</strong> Basic (gratis), Developer (email), Business (24/7 telefono/chat, accesso completo a Trusted Advisor), Enterprise (Sistemi mission-critical, include TAM).</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+            <div class="grid-container">
+                <div class="card reveal">
+                    <h3>Piani tariffari per le Istanze (EC2)</h3>
+                    <ul class="custom-list">
+                        <li><strong>On-Demand:</strong> Paghi al secondo o all'ora. Nessun impegno. Ideale per carichi imprevedibili e di breve durata.</li>
+                        <li><strong>Reserved Instances / Savings Plans:</strong> Impegno a priori di 1 o 3 anni. Sconto enorme (fino al 72%). Per carichi di lavoro in esecuzione costante.</li>
+                        <li><strong>Spot Instances:</strong> Sconto fino al 90%. AWS può spegnerle con 2 minuti di preavviso. Ideali per batch processing e calcoli non critici.</li>
+                        <li><strong>Dedicated Hosts:</strong> Server fisici dedicati interamente a te. Obbligatorio per regole di compliance legale o licenze software BYOL.</li>
+                    </ul>
+                </div>
+                <div class="card reveal">
+                    <h3>Strumenti Finanziari</h3>
+                    <ul class="custom-list">
+                        <li><strong>AWS Pricing Calculator:</strong> Da usare <em>prima</em> di lanciare i servizi per fare preventivi.</li>
+                        <li><strong>AWS Cost Explorer:</strong> Grafici interattivi per analizzare la spesa storica e fare previsioni future.</li>
+                        <li><strong>AWS Budgets:</strong> Imposta limiti personalizzati e invia allarmi prima che la fattura diventi troppo alta.</li>
+                        <li><strong>Piani di Supporto:</strong> Basic (gratis), Developer (email), Business (24/7 telefono/chat, accesso completo a Trusted Advisor), Enterprise (Sistemi mission-critical, include TAM).</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
-        <section id="tips">
-            <div class="section-header reveal">
-                <h2>6. Tips & Tricks per l'Esame</h2>
-            </div>
+        <section id="tips">
+            <div class="section-header reveal">
+                <h2>6. Tips & Tricks per l'Esame</h2>
+            </div>
 
-            <div class="info-box tips reveal">
-                <h3>🧠 Cheat Codes: Associazione Parole Chiave</h3>
-                <p>All'esame, spesso una singola parola o frase nella domanda ti porta direttamente alla risposta corretta. Memorizza queste associazioni visive:</p>
-                <div class="services-grid tips-grid" style="margin-top: 20px;">
-                    <div class="service-item"><strong>"Disaccoppiare" (Decouple)</strong> <span>👉 Amazon SQS</span></div>
-                    <div class="service-item"><strong>"Senza gestire server"</strong> <span>👉 Lambda o Fargate</span></div>
-                    <div class="service-item"><strong>"Distribuzione Globale / Cache"</strong> <span>👉 CloudFront</span></div>
-                    <div class="service-item"><strong>"Modelli / Infrastructure as Code"</strong> <span>👉 CloudFormation</span></div>
-                    <div class="service-item"><strong>"Storico API / Auditing"</strong> <span>👉 CloudTrail</span></div>
-                    <div class="service-item"><strong>"File condivisi tra EC2 Linux"</strong> <span>👉 Amazon EFS</span></div>
-                    <div class="service-item"><strong>"Data Warehouse / Analisi dati"</strong> <span>👉 Amazon Redshift</span></div>
-                    <div class="service-item"><strong>"Previsione di spesa"</strong> <span>👉 AWS Cost Explorer</span></div>
-                </div>
-            </div>
+            <div class="info-box tips reveal">
+                <h3>🧠 Cheat Codes: Associazione Parole Chiave</h3>
+                <p>All'esame, spesso una singola parola o frase nella domanda ti porta direttamente alla risposta corretta. Memorizza queste associazioni visive:</p>
+                <div class="services-grid tips-grid" style="margin-top: 20px;">
+                    <div class="service-item"><strong>"Disaccoppiare" (Decouple)</strong> <span>👉 Amazon SQS</span></div>
+                    <div class="service-item"><strong>"Senza gestire server"</strong> <span>👉 Lambda o Fargate</span></div>
+                    <div class="service-item"><strong>"Distribuzione Globale / Cache"</strong> <span>👉 CloudFront</span></div>
+                    <div class="service-item"><strong>"Modelli / Infrastructure as Code"</strong> <span>👉 CloudFormation</span></div>
+                    <div class="service-item"><strong>"Storico API / Auditing"</strong> <span>👉 CloudTrail</span></div>
+                    <div class="service-item"><strong>"File condivisi tra EC2 Linux"</strong> <span>👉 Amazon EFS</span></div>
+                    <div class="service-item"><strong>"Data Warehouse / Analisi dati"</strong> <span>👉 Amazon Redshift</span></div>
+                    <div class="service-item"><strong>"Previsione di spesa"</strong> <span>👉 AWS Cost Explorer</span></div>
+                </div>
+            </div>
 
-            <div class="grid-container">
-                <div class="card reveal">
-                    <h3 style="color: var(--aws-green);">✅ Strategia di Eliminazione</h3>
-                    <ul class="check-list">
-                        <li>In quasi tutte le domande a risposta multipla, <strong>due opzioni sono sempre sbagliate</strong> o non esistono nemmeno come servizi reali. Concentrati sulle due rimanenti.</li>
-                        <li>Se la domanda chiede la soluzione <em>"più economica" (cost-effective)</em> per lo storage, la risposta è quasi sempre <strong>S3 Glacier</strong> o <strong>S3 Standard-IA</strong>.</li>
-                        <li>Se la domanda parla di ambiente <em>"on-premise"</em> o "ibrido", cerca servizi come Direct Connect, Storage Gateway o AWS Outposts.</li>
-                    </ul>
-                </div>
-                
-                <div class="card reveal">
-                    <h3 style="color: var(--aws-red);">⚠️ Trappole Comuni (Attenzione!)</h3>
-                    <ul class="warning-list">
-                        <li><strong>CloudTrail vs CloudWatch:</strong> CloudTrail registra <em>"CHI ha fatto un'azione"</em>. CloudWatch monitora <em>"COME stanno performando le risorse"</em> (CPU, RAM). Non confonderli!</li>
-                        <li><strong>Security Group vs NACL:</strong> Il Security Group protegge la singola <em>Istanza</em> (è stateful). La NACL protegge l'intera <em>Subnet</em> (è stateless).</li>
-                        <li><strong>S3 vs EBS:</strong> S3 è per file distribuiti (immagini, backup). EBS è il disco rigido collegato fisicamente a un'istanza EC2.</li>
-                    </ul>
-                </div>
+            <div class="grid-container">
+                <div class="card reveal">
+                    <h3 style="color: var(--aws-green);">✅ Strategia di Eliminazione</h3>
+                    <ul class="check-list">
+                        <li>In quasi tutte le domande a risposta multipla, <strong>due opzioni sono sempre sbagliate</strong> o non esistono nemmeno come servizi reali. Concentrati sulle due rimanenti.</li>
+                        <li>Se la domanda chiede la soluzione <em>"più economica" (cost-effective)</em> per lo storage, la risposta è quasi sempre <strong>S3 Glacier</strong> o <strong>S3 Standard-IA</strong>.</li>
+                        <li>Se la domanda parla di ambiente <em>"on-premise"</em> o "ibrido", cerca servizi come Direct Connect, Storage Gateway o AWS Outposts.</li>
+                    </ul>
+                </div>
+                
+                <div class="card reveal">
+                    <h3 style="color: var(--aws-red);">⚠️ Trappole Comuni (Attenzione!)</h3>
+                    <ul class="warning-list">
+                        <li><strong>CloudTrail vs CloudWatch:</strong> CloudTrail registra <em>"CHI ha fatto un'azione"</em>. CloudWatch monitora <em>"COME stanno performando le risorse"</em> (CPU, RAM). Non confonderli!</li>
+                        <li><strong>Security Group vs NACL:</strong> Il Security Group protegge la singola <em>Istanza</em> (è stateful). La NACL protegge l'intera <em>Subnet</em> (è stateless).</li>
+                        <li><strong>S3 vs EBS:</strong> S3 è per file distribuiti (immagini, backup). EBS è il disco rigido collegato fisicamente a un'istanza EC2.</li>
+                    </ul>
+                </div>
 
-                <div class="card reveal">
-                    <h3 style="color: var(--aws-blue);">⏳ Gestione del Tempo</h3>
-                    <ul class="custom-list">
-                        <li>Hai <strong>90 minuti per 65 domande</strong>. Sono quasi 1 minuto e 20 secondi a domanda. È un tempo molto abbondante, non correre!</li>
-                        <li>Non farti prendere dal panico se non sai una risposta. Usa il tasto <strong>"Flag for Review"</strong> (Segna per la revisione), metti una risposta a intuito e vai avanti. Potrai tornarci alla fine.</li>
-                        <li>Molto spesso, le domande successive contengono suggerimenti o ti ricordano servizi che ti aiutano a rispondere alle domande precedenti che avevi saltato.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+                <div class="card reveal">
+                    <h3 style="color: var(--aws-blue);">⏳ Gestione del Tempo</h3>
+                    <ul class="custom-list">
+                        <li>Hai <strong>90 minuti per 65 domande</strong>. Sono quasi 1 minuto e 20 secondi a domanda. È un tempo molto abbondante, non correre!</li>
+                        <li>Non farti prendere dal panico se non sai una risposta. Usa il tasto <strong>"Flag for Review"</strong> (Segna per la revisione), metti una risposta a intuito e vai avanti. Potrai tornarci alla fine.</li>
+                        <li>Molto spesso, le domande successive contengono suggerimenti o ti ricordano servizi che ti aiutano a rispondere alle domande precedenti che avevi saltato.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
-        <section id="quiz">
-            <div class="section-header reveal">
-                <h2>7. Quiz di Preparazione</h2>
-            </div>
-            
-            <p style="text-align: center; margin-bottom: 3rem; font-size: 1.1rem;" class="reveal">Mettiti alla prova con le domande ufficiali e pratiche. Clicca su <strong>"Mostra Risposta"</strong> per verificare la tua preparazione!</p>
+        <section id="quiz">
+            <div class="section-header reveal">
+                <h2>7. Quiz di Preparazione</h2>
+            </div>
+            
+            <p style="text-align: center; margin-bottom: 3rem; font-size: 1.1rem;" class="reveal">Mettiti alla prova con le domande ufficiali e pratiche. Clicca su <strong>"Mostra Risposta"</strong> per verificare la tua preparazione!</p>
 
-            <div class="grid-container">
-                
-                <h3 class="quiz-category-title reveal">🗄️ Database</h3>
-                <div class="card reveal">
-                    <h4>Quali servizi di database AWS supportano le applicazioni NoSQL?</h4>
-                    <details>
-                        <summary>Mostra Risposta</summary>
-                        <div class="quiz-answer">
-                            <p><strong>Risposte Corrette:</strong> Amazon DynamoDB, Amazon Neptune</p>
-                            <p><em>Spiegazione:</em> DynamoDB è progettato per dati chiave-valore e documentali; Neptune è progettato specificamente per i database a grafi (entrambi NoSQL).</p>
-                        </div>
-                    </details>
-                </div>
+            <div class="grid-container">
+                
+                <h3 class="quiz-category-title reveal">🗄️ Database</h3>
+                <div class="card reveal">
+                    <h4>Quali servizi di database AWS supportano le applicazioni NoSQL?</h4>
+                    <details>
+                        <summary>Mostra Risposta</summary>
+                        <div class="quiz-answer">
+                            <p><strong>Risposte Corrette:</strong> Amazon DynamoDB, Amazon Neptune</p>
+                            <p><em>Spiegazione:</em> DynamoDB è progettato per dati chiave-valore e documentali; Neptune è progettato specificamente per i database a grafi (entrambi NoSQL).</p>
+                        </div>
+                    </details>
+                </div>
 
-                <h3 class="quiz-category-title reveal">🌐 Networking & Sicurezza (VPC)</h3>
-                
-                
-                
-                <div class="card reveal">
-                    <h4>Quale opzione di connettività per un VPC consente a una sottorete privata di connettersi a Internet?</h4>
-                    <details>
-                        <summary>Mostra Risposta</summary>
-                        <div class="quiz-answer">
-                            <p><strong>Risposta Corretta:</strong> Gateway NAT (NAT Gateway)</p>
-                            <p><em>Spiegazione:</em> Il NAT permette al traffico in uscita dalle istanze private di raggiungere Internet (ad es. per aggiornamenti software), bloccando però le connessioni dirette in entrata.</p>
-                        </div>
-                    </details>
-                </div>
+                <h3 class="quiz-category-title reveal">🌐 Networking & Sicurezza (VPC)</h3>
+                
+                <div class="card reveal">
+                    <h4>Quale opzione di connettività per un VPC consente a una sottorete privata di connettersi a Internet?</h4>
+                    <details>
+                        <summary>Mostra Risposta</summary>
+                        <div class="quiz-answer">
+                            <p><strong>Risposta Corretta:</strong> Gateway NAT (NAT Gateway)</p>
+                            <p><em>Spiegazione:</em> Il NAT permette al traffico in uscita dalle istanze private di raggiungere Internet (ad es. per aggiornamenti software), bloccando però le connessioni dirette in entrata.</p>
+                        </div>
+                    </details>
+                </div>
 
-                <div class="card reveal">
-                    <h4>Un ingegnere di rete deve acquisire informazioni sul traffico IP in entrata e in uscita dal VPC. Quale funzionalità utilizzare?</h4>
-                    <details>
-                        <summary>Mostra Risposta</summary>
-                        <div class="quiz-answer">
-                            <p><strong>Risposta Corretta:</strong> Log di flusso VPC (VPC Flow Logs)</p>
-                            <p><em>Spiegazione:</em> I log di flusso registrano i pacchetti IP in entrata e in uscita, utilissimi per il troubleshooting e l'analisi della sicurezza (es. per vedere quale traffico è stato bloccato).</p>
-                        </div>
-                    </details>
-                </div>
+                <div class="card reveal">
+                    <h4>Un ingegnere di rete deve acquisire informazioni sul traffico IP in entrata e in uscita dal VPC. Quale funzionalità utilizzare?</h4>
+                    <details>
+                        <summary>Mostra Risposta</summary>
+                        <div class="quiz-answer">
+                            <p><strong>Risposta Corretta:</strong> Log di flusso VPC (VPC Flow Logs)</p>
+                            <p><em>Spiegazione:</em> I log di flusso registrano i pacchetti IP in entrata e in uscita, utilissimi per il troubleshooting e l'analisi della sicurezza (es. per vedere quale traffico è stato bloccato).</p>
+                        </div>
+                    </details>
+                </div>
 
-                <div class="card reveal">
-                    <h4>Che tipo di regole può aggiungere un ingegnere alle tabelle di una ACL di rete (NACL)?</h4>
-                    <details>
-                        <summary>Mostra Risposta</summary>
-                        <div class="quiz-answer">
-                            <p><strong>Risposta Corretta:</strong> Regole di autorizzazione e negazione (Allow e Deny)</p>
-                            <p><em>Spiegazione:</em> A differenza dei Security Group (che supportano solo regole Allow), le NACL operano a livello di subnet e permettono di negare esplicitamente il traffico da un IP specifico.</p>
-                        </div>
-                    </details>
-                </div>
+                <div class="card reveal">
+                    <h4>Che tipo di regole può aggiungere un ingegnere alle tabelle di una ACL di rete (NACL)?</h4>
+                    <details>
+                        <summary>Mostra Risposta</summary>
+                        <div class="quiz-answer">
+                            <p><strong>Risposta Corretta:</strong> Regole di autorizzazione e negazione (Allow e Deny)</p>
+                            <p><em>Spiegazione:</em> A differenza dei Security Group (che supportano solo regole Allow), le NACL operano a livello di subnet e permettono di negare esplicitamente il traffico da un IP specifico.</p>
+                        </div>
+                    </details>
+                </div>
 
-                <div class="card reveal">
-                    <h4>Quali affermazioni descrivono correttamente i gruppi di sicurezza (Security Groups)?</h4>
-                    <details>
-                        <summary>Mostra Risposta</summary>
-                        <div class="quiz-answer">
-                            <p><strong>Risposte Corrette:</strong> <br>1. Dispongono di una tabella in entrata e una in uscita. <br>2. Il gruppo predefinito consente tutto il traffico tra le risorse interne.</p>
-                            <p><em>Spiegazione:</em> I Security Group sono firewall stateful che operano a livello di istanza.</p>
-                        </div>
-                    </details>
-                </div>
+                <div class="card reveal">
+                    <h4>Quali affermazioni descrivono correttamente i gruppi di sicurezza (Security Groups)?</h4>
+                    <details>
+                        <summary>Mostra Risposta</summary>
+                        <div class="quiz-answer">
+                            <p><strong>Risposte Corrette:</strong> <br>1. Dispongono di una tabella in entrata e una in uscita. <br>2. Il gruppo predefinito consente tutto il traffico tra le risorse interne.</p>
+                            <p><em>Spiegazione:</em> I Security Group sono firewall stateful che operano a livello di istanza.</p>
+                        </div>
+                    </details>
+                </div>
 
-                <div class="card reveal">
-                    <h4>Cos'è un segmento di rete logico in un VPC che può esistere solo in una singola zona di disponibilità?</h4>
-                    <details>
-                        <summary>Mostra Risposta</summary>
-                        <div class="quiz-answer">
-                            <p><strong>Risposta Corretta:</strong> Sottorete (Subnet)</p>
-                            <p><em>Spiegazione:</em> Una subnet non può mai estendersi su più di una singola AZ.</p>
-                        </div>
-                    </details>
-                </div>
+                <div class="card reveal">
+                    <h4>Cos'è un segmento di rete logico in un VPC che può esistere solo in una singola zona di disponibilità?</h4>
+                    <details>
+                        <summary>Mostra Risposta</summary>
+                        <div class="quiz-answer">
+                            <p><strong>Risposta Corretta:</strong> Sottorete (Subnet)</p>
+                            <p><em>Spiegazione:</em> Una subnet non può mai estendersi su più di una singola AZ.</p>
+                        </div>
+                    </details>
+                </div>
 
-                <h3 class="quiz-category-title reveal">💻 Compute e Storage</h3>
-                
-                <div class="card reveal">
-                    <h4>Quale affermazione relativa ad Amazon Machine Images (AMI) è vera?</h4>
-                    <details>
-                        <summary>Mostra Risposta</summary>
-                        <div class="quiz-answer">
-                            <p><strong>Risposta Corretta:</strong> Un'AMI è ancorata a livello di Regione.</p>
-                            <p><em>Spiegazione:</em> Le AMI sono specifiche per regione. Se vuoi lanciare la stessa istanza in un'altra regione, devi prima copiare l'AMI.</p>
-                        </div>
-                    </details>
-                </div>
+                <h3 class="quiz-category-title reveal">💻 Compute e Storage</h3>
+                
+                <div class="card reveal">
+                    <h4>Quale affermazione relativa ad Amazon Machine Images (AMI) è vera?</h4>
+                    <details>
+                        <summary>Mostra Risposta</summary>
+                        <div class="quiz-answer">
+                            <p><strong>Risposta Corretta:</strong> Un'AMI è ancorata a livello di Regione.</p>
+                            <p><em>Spiegazione:</em> Le AMI sono specifiche per regione. Se vuoi lanciare la stessa istanza in un'altra regione, devi prima copiare l'AMI.</p>
+                        </div>
+                    </details>
+                </div>
 
-                <div class="card reveal">
-                    <h4>Quale soluzione fornisce archiviazione temporanea per un'istanza Amazon EC2?</h4>
-                    <details>
-                        <summary>Mostra Risposta</summary>
-                        <div class="quiz-answer">
-                            <p><strong>Risposta Corretta:</strong> Archivio dell'istanza (Instance Store)</p>
-                            <p><em>Spiegazione:</em> Si tratta di dischi fisicamente collegati all'host su cui gira EC2. Sono velocissimi ma temporanei (i dati si perdono se l'istanza viene fermata).</p>
-                        </div>
-                    </details>
-                </div>
+                <div class="card reveal">
+                    <h4>Quale soluzione fornisce archiviazione temporanea per un'istanza Amazon EC2?</h4>
+                    <details>
+                        <summary>Mostra Risposta</summary>
+                        <div class="quiz-answer">
+                            <p><strong>Risposta Corretta:</strong> Archivio dell'istanza (Instance Store)</p>
+                            <p><em>Spiegazione:</em> Si tratta di dischi fisicamente collegati all'host su cui gira EC2. Sono velocissimi ma temporanei (i dati si perdono se l'istanza viene fermata).</p>
+                        </div>
+                    </details>
+                </div>
 
-                <div class="card reveal">
-                    <h4>Quale tipo di volume EBS offre le prestazioni più elevate per le operazioni di lettura/scrittura frequenti?</h4>
-                    <details>
-                        <summary>Mostra Risposta</summary>
-                        <div class="quiz-answer">
-                            <p><strong>Risposta Corretta:</strong> SSD con capacità di IOPS allocata (io2)</p>
-                            <p><em>Spiegazione:</em> I volumi "io" (Provisioned IOPS) sono pensati per carichi di lavoro mission-critical o database che necessitano di prestazioni I/O costanti e garantite.</p>
-                        </div>
-                    </details>
-                </div>
+                <div class="card reveal">
+                    <h4>Quale tipo di volume EBS offre le prestazioni più elevate per le operazioni di lettura/scrittura frequenti?</h4>
+                    <details>
+                        <summary>Mostra Risposta</summary>
+                        <div class="quiz-answer">
+                            <p><strong>Risposta Corretta:</strong> SSD con capacità di IOPS allocata (io2)</p>
+                            <p><em>Spiegazione:</em> I volumi "io" (Provisioned IOPS) sono pensati per carichi di lavoro mission-critical o database che necessitano di prestazioni I/O costanti e garantite.</p>
+                        </div>
+                    </details>
+                </div>
 
-                <div class="card reveal">
-                    <h4>Quale classe di archiviazione S3 usare quando il modello di accesso ai dati è sconosciuto o cambia?</h4>
-                    <details>
-                        <summary>Mostra Risposta</summary>
-                        <div class="quiz-answer">
-                            <p><strong>Risposta Corretta:</strong> S3 Intelligent-Tiering</p>
-                            <p><em>Spiegazione:</em> Questa classe sposta automaticamente gli oggetti tra i livelli di accesso frequente e non frequente, ottimizzando i costi senza penalità per il recupero dati.</p>
-                        </div>
-                    </details>
-                </div>
+                <div class="card reveal">
+                    <h4>Quale classe di archiviazione S3 usare quando il modello di accesso ai dati è sconosciuto o cambia?</h4>
+                    <details>
+                        <summary>Mostra Risposta</summary>
+                        <div class="quiz-answer">
+                            <p><strong>Risposta Corretta:</strong> S3 Intelligent-Tiering</p>
+                            <p><em>Spiegazione:</em> Questa classe sposta automaticamente gli oggetti tra i livelli di accesso frequente e non frequente, ottimizzando i costi senza penalità per il recupero dati.</p>
+                        </div>
+                    </details>
+                </div>
 
-                <div class="card reveal">
-                    <h4>Quanto tempo è necessario per eseguire un recupero dei dati standard da Amazon S3 Glacier?</h4>
-                    <details>
-                        <summary>Mostra Risposta</summary>
-                        <div class="quiz-answer">
-                            <p><strong>Risposta Corretta:</strong> 3-5 ore</p>
-                            <p><em>Spiegazione:</em> Glacier è progettato per l'archiviazione a lungo termine ("a freddo"). Il recupero standard richiede qualche ora. Non è istantaneo come S3 Standard.</p>
-                        </div>
-                    </details>
-                </div>
+                <div class="card reveal">
+                    <h4>Quanto tempo è necessario per eseguire un recupero dei dati standard da Amazon S3 Glacier?</h4>
+                    <details>
+                        <summary>Mostra Risposta</summary>
+                        <div class="quiz-answer">
+                            <p><strong>Risposta Corretta:</strong> 3-5 ore</p>
+                            <p><em>Spiegazione:</em> Glacier è progettato per l'archiviazione a lungo termine ("a freddo"). Il recupero standard richiede qualche ora. Non è istantaneo come S3 Standard.</p>
+                        </div>
+                    </details>
+                </div>
 
-                <h3 class="quiz-category-title reveal">🛠️ Monitoraggio, Eventi e Auditing</h3>
-                
-                <div class="card reveal">
-                    <h4>Quale funzionalità monitora un parametro e invia un avviso quando il parametro cambia e supera una soglia?</h4>
-                    <details>
-                        <summary>Mostra Risposta</summary>
-                        <div class="quiz-answer">
-                            <p><strong>Risposta Corretta:</strong> Allarmi di Amazon CloudWatch</p>
-                            <p><em>Spiegazione:</em> Gli allarmi scattano al superamento delle soglie impostate per specifiche metriche (es. CPU > 80%).</p>
-                        </div>
-                    </details>
-                </div>
+                <h3 class="quiz-category-title reveal">🛠️ Monitoraggio, Eventi e Auditing</h3>
+                
+                <div class="card reveal">
+                    <h4>Quale funzionalità monitora un parametro e invia un avviso quando il parametro cambia e supera una soglia?</h4>
+                    <details>
+                        <summary>Mostra Risposta</summary>
+                        <div class="quiz-answer">
+                            <p><strong>Risposta Corretta:</strong> Allarmi di Amazon CloudWatch</p>
+                            <p><em>Spiegazione:</em> Gli allarmi scattano al superamento delle soglie impostate per specifiche metriche (es. CPU > 80%).</p>
+                        </div>
+                    </details>
+                </div>
 
-                <div class="card reveal">
-                    <h4>Quale servizio può essere utilizzato con AWS CloudTrail per archiviare a lungo termine i log delle chiamate API?</h4>
-                    <details>
-                        <summary>Mostra Risposta</summary>
-                        <div class="quiz-answer">
-                            <p><strong>Risposta Corretta:</strong> Amazon Simple Storage Service (Amazon S3)</p>
-                            <p><em>Spiegazione:</em> CloudTrail registra le attività dell'account e può salvare i file di log in un bucket S3 per sicurezza e compliance.</p>
-                        </div>
-                    </details>
-                </div>
+                <div class="card reveal">
+                    <h4>Quale servizio può essere utilizzato con AWS CloudTrail per archiviare a lungo termine i log delle chiamate API?</h4>
+                    <details>
+                        <summary>Mostra Risposta</summary>
+                        <div class="quiz-answer">
+                            <p><strong>Risposta Corretta:</strong> Amazon Simple Storage Service (Amazon S3)</p>
+                            <p><em>Spiegazione:</em> CloudTrail registra le attività dell'account e può salvare i file di log in un bucket S3 per sicurezza e compliance.</p>
+                        </div>
+                    </details>
+                </div>
 
-                <div class="card reveal">
-                    <h4>Su quale tipo di log possono essere eseguite direttamente query con Amazon Athena?</h4>
-                    <details>
-                        <summary>Mostra Risposta</summary>
-                        <div class="quiz-answer">
-                            <p><strong>Risposta Corretta:</strong> Log di AWS CloudTrail (salvati su S3)</p>
-                            <p><em>Spiegazione:</em> Athena permette di interrogare file e log presenti nei bucket S3 usando normali query SQL.</p>
-                        </div>
-                    </details>
-                </div>
+                <div class="card reveal">
+                    <h4>Su quale tipo di log possono essere eseguite direttamente query con Amazon Athena?</h4>
+                    <details>
+                        <summary>Mostra Risposta</summary>
+                        <div class="quiz-answer">
+                            <p><strong>Risposta Corretta:</strong> Log di AWS CloudTrail (salvati su S3)</p>
+                            <p><em>Spiegazione:</em> Athena permette di interrogare file e log presenti nei bucket S3 usando normali query SQL.</p>
+                        </div>
+                    </details>
+                </div>
 
-                <h3 class="quiz-category-title reveal">⚙️ Automazione, System Administration & Scripting</h3>
-                
-                <div class="card reveal">
-                    <h4>Quale servizio AWS crea un modello simile a script che rappresenta uno stack di risorse per fare il provisioning dell'infrastruttura?</h4>
-                    <details>
-                        <summary>Mostra Risposta</summary>
-                        <div class="quiz-answer">
-                            <p><strong>Risposta Corretta:</strong> AWS CloudFormation</p>
-                            <p><em>Spiegazione:</em> Fondamento del concetto di "Infrastructure as Code" (IaC) su AWS. Usa template JSON o YAML.</p>
-                        </div>
-                    </details>
-                </div>
+                <h3 class="quiz-category-title reveal">⚙️ Automazione, System Administration & Scripting (Extra)</h3>
+                
+                <div class="card reveal">
+                    <h4>Quale servizio AWS crea un modello simile a script che rappresenta uno stack di risorse per fare il provisioning dell'infrastruttura?</h4>
+                    <details>
+                        <summary>Mostra Risposta</summary>
+                        <div class="quiz-answer">
+                            <p><strong>Risposta Corretta:</strong> AWS CloudFormation</p>
+                            <p><em>Spiegazione:</em> Fondamento del concetto di "Infrastructure as Code" (IaC) su AWS. Usa template JSON o YAML.</p>
+                        </div>
+                    </details>
+                </div>
 
-                <div class="card reveal">
-                    <h4>Un amministratore riceve un errore di Access Denied cercando di salvare un modello CloudFormation in S3. Qual è il motivo probabile?</h4>
-                    <details>
-                        <summary>Mostra Risposta</summary>
-                        <div class="quiz-answer">
-                            <p><strong>Risposta Corretta:</strong> L'amministratore (o il ruolo IAM usato) non ha le autorizzazioni per scrivere nel bucket (es. manca l'azione <em>s3:PutObject</em>).</p>
-                        </div>
-                    </details>
-                </div>
+                <div class="card reveal">
+                    <h4>Un amministratore riceve un errore di Access Denied cercando di salvare un modello CloudFormation in S3. Qual è il motivo probabile?</h4>
+                    <details>
+                        <summary>Mostra Risposta</summary>
+                        <div class="quiz-answer">
+                            <p><strong>Risposta Corretta:</strong> L'amministratore (o il ruolo IAM usato) non ha le autorizzazioni per scrivere nel bucket (es. manca l'azione <em>s3:PutObject</em>).</p>
+                        </div>
+                    </details>
+                </div>
 
-                <div class="card reveal">
-                    <h4>Quale parte del comando (di apt-get) installa effettivamente i pacchetti aggiornati nel sistema operativo Linux Debian/Ubuntu?</h4>
-                    <details>
-                        <summary>Mostra Risposta</summary>
-                        <div class="quiz-answer">
-                            <p><strong>Risposta Corretta:</strong> apt-get upgrade</p>
-                            <p><em>Spiegazione:</em> "update" aggiorna solo la lista dei pacchetti disponibili; "upgrade" esegue il vero e proprio aggiornamento del software sul server.</p>
-                        </div>
-                    </details>
-                </div>
+                <div class="card reveal">
+                    <h4>Quale parte del comando (di apt-get) installa effettivamente i pacchetti aggiornati nel sistema operativo Linux Debian/Ubuntu?</h4>
+                    <details>
+                        <summary>Mostra Risposta</summary>
+                        <div class="quiz-answer">
+                            <p><strong>Risposta Corretta:</strong> apt-get upgrade</p>
+                            <p><em>Spiegazione:</em> "update" aggiorna solo la lista dei pacchetti disponibili; "upgrade" esegue il vero e proprio aggiornamento del software sul server. (Conoscenza utile lato OS).</p>
+                        </div>
+                    </details>
+                </div>
 
-                <div class="card reveal">
-                    <h4>Quale funzione in Python 3.x è l'alternativa raccomandata alla obsoleta funzione os.system() per eseguire comandi di sistema?</h4>
-                    <details>
-                        <summary>Mostra Risposta</summary>
-                        <div class="quiz-answer">
-                            <p><strong>Risposta Corretta:</strong> subprocess.run()</p>
-                            <p><em>Spiegazione:</em> Il modulo <em>subprocess</em> è il modo moderno, flessibile e sicuro per spawnare nuovi processi o eseguire comandi tramite script Python.</p>
-                        </div>
-                    </details>
-                </div>
-                
-                <div class="card reveal">
-                    <h4>(Extra) In ottica di "Principle of Least Privilege" (Principio del privilegio minimo), come dovrebbero essere assegnati i permessi IAM?</h4>
-                    <details>
-                        <summary>Mostra Risposta</summary>
-                        <div class="quiz-answer">
-                            <p><strong>Risposta Corretta:</strong> Assegnare solo le autorizzazioni strettamente necessarie per svolgere una specifica mansione, e niente di più.</p>
-                            <p><em>Spiegazione:</em> È la best practice fondamentale della sicurezza AWS per limitare l'esposizione al rischio.</p>
-                        </div>
-                    </details>
-                </div>
+                <div class="card reveal">
+                    <h4>Quale funzione in Python 3.x è l'alternativa raccomandata alla obsoleta funzione os.system() per eseguire comandi di sistema?</h4>
+                    <details>
+                        <summary>Mostra Risposta</summary>
+                        <div class="quiz-answer">
+                            <p><strong>Risposta Corretta:</strong> subprocess.run()</p>
+                            <p><em>Spiegazione:</em> Il modulo <em>subprocess</em> è il modo moderno, flessibile e sicuro per spawnare nuovi processi o eseguire comandi tramite script Python.</p>
+                        </div>
+                    </details>
+                </div>
+                
+                <div class="card reveal">
+                    <h4>In ottica di "Principle of Least Privilege" (Principio del privilegio minimo), come dovrebbero essere assegnati i permessi IAM?</h4>
+                    <details>
+                        <summary>Mostra Risposta</summary>
+                        <div class="quiz-answer">
+                            <p><strong>Risposta Corretta:</strong> Assegnare solo le autorizzazioni strettamente necessarie per svolgere una specifica mansione, e niente di più.</p>
+                            <p><em>Spiegazione:</em> È la best practice fondamentale della sicurezza AWS per limitare l'esposizione al rischio.</p>
+                        </div>
+                    </details>
+                </div>
 
-            </div>
-        </section>
+            </div>
+        </section>
 
-    </main>
+    </main>
 
-    <footer>
-        <p>Il cloud non avrà più segreti. In bocca al lupo per il tuo esame AWS Certified Cloud Practitioner! ☁️🚀</p>
-        <div class="made-by">MADE BY WALEED</div>
-    </footer>
+    <footer>
+        <p>Il cloud non avrà più segreti. In bocca al lupo per il tuo esame AWS Certified Cloud Practitioner! ☁️🚀</p>
+        <div class="made-by">MADE BY WALEED</div>
+    </footer>
 
-    <script>
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 120;
-                
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
-                }
-            }
-        }
-        window.addEventListener("scroll", reveal);
-        // Richiama all'avvio
-        reveal(); 
-    </script>
+    <script>
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100; // Abbassato leggermente per attivarsi prima
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        // Richiama all'avvio
+        reveal(); 
+    </script>
 </body>
-</html>    controlla che tutti i dati siano corretti, aggiungi una animazione carino di loading, magari un animale che gioca...un gatto o qualcosina che cade e fa aprire la tenda
+</html>
